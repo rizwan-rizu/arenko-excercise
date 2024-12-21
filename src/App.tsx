@@ -1,18 +1,9 @@
-import { useState } from 'react';
-import './App.css';
+import CarbonIntesity from "./carbonIntensity";
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
 
   return (
-    <>
-      <h1>FE exercise</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+    <CarbonIntesity />
   );
 }
 
