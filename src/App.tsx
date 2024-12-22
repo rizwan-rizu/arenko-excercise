@@ -1,4 +1,4 @@
-import CarbonIntesity from "./carbonIntensity";
+import CarbonIntesity from "./pages/carbonIntensity";
 
 const App = () => {
 
