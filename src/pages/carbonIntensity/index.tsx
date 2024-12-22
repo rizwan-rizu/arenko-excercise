@@ -1,18 +1,18 @@
-import { Checkbox, Container, FormControlLabel, Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
+import { Dayjs } from "dayjs";
+import { useReducer } from "react";
+import { initialState, reducer } from "./reducer";
 import Template from "../template";
 import DateTimeField from "../../commonComponents/dateTimeField";
-import { Dayjs } from "dayjs";
-import CheckBox from "../../commonComponents/checkbox";
 
 const CarbonIntesity = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const body = () => (
     <Container>
       <Stack direction="row" spacing={2}>
-        <DateTimeField label="From" handleChange={(value: Dayjs) => console.log(value)} />
-        <DateTimeField label="To" handleChange={(value: Dayjs) => console.log(value)} />
-        <CheckBox size="medium" defaultChecked={false} label="Actual" handleChange={(value: boolean) => console.log(value)} />
-        <CheckBox size="medium" defaultChecked={false} label="Forecasted" handleChange={(value: boolean) => console.log(value)} />
+        <DateTimeField label="From" handleChange={(value: Dayjs) => dispatch({ type: "from", payload: value })} />
+        <DateTimeField label="To" handleChange={(value: Dayjs) => dispatch({ type: "to", payload: value })} />
       </Stack>
     </Container>
   )
