@@ -2,7 +2,7 @@ import Footer from "./footer";
 import Header from "./header";
 
 interface iTemplateProps {
-  body: any
+  body: any;
   headerTitle: string
 }
 
