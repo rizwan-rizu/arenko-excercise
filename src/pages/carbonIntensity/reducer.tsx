@@ -1,25 +1,42 @@
 import { Dayjs } from "dayjs";
+import { CHART_LOADING, DATA, FROM, TO } from "./action";
 
-interface iState {
+export interface State {
   from: Dayjs | null;
   to: Dayjs | null;
-  type: "actual" | "forecasted" | null;
+  isChartLoading: boolean
+  xValues: (string | null)[]
+  forecastValues: (number | null)[]
+  actualValues: (number | null)[]
 }
 
-type iAction =
+type Action =
   | { type: "from"; payload: Dayjs | null }
   | { type: "to"; payload: Dayjs | null }
-  | { type: "type"; payload: "actual" | "forecasted" | null };
+  | { type: "chartLoading" }
+  | {
+    type: 'data';
+    payload: { xValues: State["xValues"], forecastValues: State["forecastValues"], actualValues: State["actualValues"] }
+  };
 
-export const reducer = (state: iState, action: iAction): iState => {
+export const initialState: State = {
+  from: null,
+  to: null,
+  isChartLoading: true,
+  xValues: [],
+  forecastValues: [],
+  actualValues: []
+};
+
+export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case "from":
+    case FROM:
       return { ...state, from: action.payload };
-    case "to":
+    case TO:
       return { ...state, to: action.payload };
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
+    case CHART_LOADING:
+      return { ...state, isChartLoading: !state.isChartLoading }
+    case DATA:
+      return { ...state, ...action.payload }
   }
 }
-
-export const initialState: iState = { from: null, to: null, type: null };
