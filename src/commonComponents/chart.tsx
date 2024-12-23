@@ -37,6 +37,7 @@ const Chart = (props: iChartProps) => {
     <StyledChartWrapper>
       {type === "bar" ? (
         <BarChart
+          data-testid="barChart"
           width={width}
           height={height}
           series={getSeries()}
@@ -45,6 +46,7 @@ const Chart = (props: iChartProps) => {
         />
       ) : (
         <LineChart
+          data-testid="lineChart"
           width={width}
           height={height}
           series={getSeries()}

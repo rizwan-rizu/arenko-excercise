@@ -73,12 +73,7 @@ const CarbonIntesity = () => {
           ]}
         />
       </Stack>
-
-      {
-        error &&
-        <Alert sx={{ mt: 2 }} severity="error">{error}</Alert>
-      }
-
+      {error && <Alert sx={{ mt: 2 }} severity="error">{error}</Alert>}
       <Typography sx={{ py: 3 }} variant="h6">{`Carbon Intensity Over Time (Forecast / Actual)`}</Typography>
       {
         (!from || !to)
@@ -98,7 +93,7 @@ const CarbonIntesity = () => {
               />
             )
       }
-    </Container >
+    </Container>
   )
 
   return <Template headerTitle="Carbon Intensity" body={body()} />

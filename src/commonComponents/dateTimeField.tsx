@@ -25,7 +25,6 @@ const DateTimeField = (props: iDateTimeField) => {
           disableFuture={disableFuture}
           disablePast={disablePast}
           onChange={(newValue) => handleChange(newValue)}
-          sx={{ width: "100%" }}
         />
       </DemoContainer>
     </LocalizationProvider>
