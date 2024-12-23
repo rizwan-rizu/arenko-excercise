@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CHART_LOADING, setError, setIntensityData } from "./action";
+import { setChartLoading, setError, setIntensityData } from "./action";
 import dayjs, { Dayjs } from "dayjs";
 
 export const fetchCarbonIntensity = async (
@@ -8,7 +8,7 @@ export const fetchCarbonIntensity = async (
   dispatch: any,
 ) => {
   try {
-    dispatch({ type: CHART_LOADING, payload: true })
+    dispatch(setChartLoading(true))
     const res = await axios.get(`https://api.carbonintensity.org.uk/intensity/${dayjs(from).toISOString()}/${dayjs(to).toISOString()}`)
     if (res.status === 200) {
       dispatch(setIntensityData(res?.data?.data));
@@ -17,6 +17,6 @@ export const fetchCarbonIntensity = async (
   } catch (error: any) {
     dispatch(setError(`Data fetch error: ${error.message}`))
   } finally {
-    dispatch({ type: CHART_LOADING, payload: false })
+    dispatch(setChartLoading(false))
   }
 }

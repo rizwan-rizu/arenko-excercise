@@ -1,95 +1,55 @@
 import dayjs, { Dayjs } from "dayjs";
-import { IntensityData } from "./index";
 import { State } from "./reducer";
 
-export const FROM = "from";
-export const TO = "to";
-export const CHART_LOADING = "chartLoading";
-export const DATA = "data";
-export const ERROR = "error";
-export const INTENSITY_TYPE = "intensityType";
-
-interface SetFromDateAction {
-  type: typeof FROM;
-  payload: Dayjs;
+export enum ActionTypes {
+  FROM = "from",
+  TO = "to",
+  CHART_LOADING = "chartLoading",
+  DATA = "data",
+  ERROR = "error",
+  INTENSITY_TYPE = "intensityType",
 }
 
-interface SetToDateAction {
-  type: typeof TO;
-  payload: Dayjs;
-}
+type PayloadAction<Type extends ActionTypes, Payload> = {
+  type: Type;
+  payload: Payload;
+};
 
-interface SetErrorAction {
-  type: typeof ERROR;
-  payload: string | null;
-}
+export const setFromDate = (date: Dayjs): PayloadAction<ActionTypes.FROM, Dayjs | null> => ({
+  type: ActionTypes.FROM,
+  payload: date,
+});
 
-interface SetChartLoadingAction {
-  type: typeof CHART_LOADING;
-  payload: boolean;
-}
+export const setToDate = (date: Dayjs): PayloadAction<ActionTypes.TO, Dayjs | null> => ({
+  type: ActionTypes.TO,
+  payload: date,
+});
 
-interface SetIntensityTypeAction {
-  type: typeof INTENSITY_TYPE;
-  payload: string;
-}
+export const setChartLoading = (value: boolean): PayloadAction<ActionTypes.CHART_LOADING, boolean> => ({
+  type: ActionTypes.CHART_LOADING,
+  payload: value,
+});
 
-interface SetIntensityDataAction {
-  type: typeof DATA;
+export const setError = (message: string | null): PayloadAction<ActionTypes.ERROR, string | null> => ({
+  type: ActionTypes.ERROR,
+  payload: message,
+});
+
+export const setIntensityType = (value: string): PayloadAction<ActionTypes.INTENSITY_TYPE, string> => ({
+  type: ActionTypes.INTENSITY_TYPE,
+  payload: value,
+});
+
+export const setIntensityData = (
+  data: { from: string; intensity: { forecast: number; actual: number } }[]
+): PayloadAction<
+  ActionTypes.DATA,
+  { xValues: State["xValues"]; forecastValues: State["forecastValues"]; actualValues: State["actualValues"] }
+> => ({
+  type: ActionTypes.DATA,
   payload: {
-    xValues: State["xValues"];
-    forecastValues: State["forecastValues"];
-    actualValues: State["actualValues"];
-  };
-}
-
-export const setFromDate = (date: Dayjs): SetFromDateAction => {
-  return {
-    type: FROM,
-    payload: date
-  }
-}
-
-export const setToDate = (date: Dayjs): SetToDateAction => {
-  return {
-    type: TO,
-    payload: date
-  }
-}
-
-export const setChartLoading = (value: boolean): SetChartLoadingAction => {
-  return {
-    type: CHART_LOADING,
-    payload: value
-  }
-}
-
-export const setError = (message: string | null): SetErrorAction => {
-  return {
-    type: ERROR,
-    payload: message
-  }
-}
-
-export const setIntensityType = (value: string): SetIntensityTypeAction => {
-  return {
-    type: INTENSITY_TYPE,
-    payload: value
-  }
-}
-
-export const setIntensityData = (data: IntensityData[]): SetIntensityDataAction => {
-
-  const xValues = data.map((item) => dayjs(item.from).format("YYYY-MM-DD HH:mm"));
-  const forecastValues = data.map((item) => item.intensity.forecast);
-  const actualValues = data.map((item) => item.intensity.actual);
-
-  return {
-    type: DATA,
-    payload: {
-      xValues,
-      forecastValues,
-      actualValues
-    }
-  }
-}
+    xValues: data.map((item) => dayjs(item.from).format("YYYY-MM-DD HH:mm")),
+    forecastValues: data.map((item) => item.intensity.forecast),
+    actualValues: data.map((item) => item.intensity.actual),
+  },
+});
