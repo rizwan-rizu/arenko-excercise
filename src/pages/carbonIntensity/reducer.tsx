@@ -12,7 +12,7 @@ export interface State {
   intensityType: string;
 }
 
-type Action =
+export type Action =
   | { type: ActionTypes.FROM; payload: Dayjs | null }
   | { type: ActionTypes.TO; payload: Dayjs | null }
   | { type: ActionTypes.CHART_LOADING; payload: boolean }

@@ -1,6 +1,6 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import Chart from './chart';
+import Chart from '../chart';
 
 const mockData = {
   xValues: ['2024-01-01 00:00', '2024-01-01 01:00'],
