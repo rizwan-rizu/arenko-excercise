@@ -6,6 +6,8 @@ export const FROM = "from";
 export const TO = "to";
 export const CHART_LOADING = "chartLoading";
 export const DATA = "data";
+export const ERROR = "error";
+export const INTENSITY_TYPE = "intensityType";
 
 interface SetFromDateAction {
   type: typeof FROM;
@@ -17,6 +19,21 @@ interface SetToDateAction {
   payload: Dayjs;
 }
 
+interface SetErrorAction {
+  type: typeof ERROR;
+  payload: string | null;
+}
+
+interface SetChartLoadingAction {
+  type: typeof CHART_LOADING;
+  payload: boolean;
+}
+
+interface SetIntensityTypeAction {
+  type: typeof INTENSITY_TYPE;
+  payload: string;
+}
+
 interface SetIntensityDataAction {
   type: typeof DATA;
   payload: {
@@ -25,7 +42,6 @@ interface SetIntensityDataAction {
     actualValues: State["actualValues"];
   };
 }
-
 
 export const setFromDate = (date: Dayjs): SetFromDateAction => {
   return {
@@ -38,6 +54,27 @@ export const setToDate = (date: Dayjs): SetToDateAction => {
   return {
     type: TO,
     payload: date
+  }
+}
+
+export const setChartLoading = (value: boolean): SetChartLoadingAction => {
+  return {
+    type: CHART_LOADING,
+    payload: value
+  }
+}
+
+export const setError = (message: string | null): SetErrorAction => {
+  return {
+    type: ERROR,
+    payload: message
+  }
+}
+
+export const setIntensityType = (value: string): SetIntensityTypeAction => {
+  return {
+    type: INTENSITY_TYPE,
+    payload: value
   }
 }
 

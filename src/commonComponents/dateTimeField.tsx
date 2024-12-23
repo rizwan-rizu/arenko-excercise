@@ -17,7 +17,7 @@ const DateTimeField = (props: iDateTimeField) => {
   const { label, handleChange, disableFuture, disablePast, minDate, maxDate } = props;
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DateTimePicker']}>
+      <DemoContainer components={['DateTimePicker']} >
         <DateTimePicker
           label={label}
           minDate={minDate}
@@ -25,6 +25,7 @@ const DateTimeField = (props: iDateTimeField) => {
           disableFuture={disableFuture}
           disablePast={disablePast}
           onChange={(newValue) => handleChange(newValue)}
+          sx={{ width: "100%" }}
         />
       </DemoContainer>
     </LocalizationProvider>
