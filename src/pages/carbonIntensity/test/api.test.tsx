@@ -1,9 +1,9 @@
 import { describe, it, beforeEach, expect, vi } from "vitest";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import { setChartLoading, setError, setIntensityData } from "./action";
+import { setChartLoading, setError, setIntensityData } from "../action";
 import dayjs from "dayjs";
-import { fetchCarbonIntensity } from "./api";
+import { fetchCarbonIntensity } from "../api";
 
 describe("fetchCarbonIntensity API function", () => {
   const mockAxios = new MockAdapter(axios);

@@ -1,5 +1,5 @@
-import { reducer, initialState, Action } from './reducer';
-import { ActionTypes } from './action';
+import { reducer, initialState, Action } from '../reducer';
+import { ActionTypes } from '../action';
 import dayjs from 'dayjs';
 
 describe('Reducer', () => {
