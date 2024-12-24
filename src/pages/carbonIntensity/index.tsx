@@ -19,7 +19,7 @@ export interface IntensityData {
   };
 }
 
-const CarbonIntesity = () => {
+const CarbonIntensity = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { xValues, forecastValues, actualValues, isChartLoading, from, to, error, intensityType } = state;
 
@@ -99,4 +99,4 @@ const CarbonIntesity = () => {
   return <Template headerTitle="Carbon Intensity" body={body()} />
 }
 
-export default CarbonIntesity;
+export default CarbonIntensity;

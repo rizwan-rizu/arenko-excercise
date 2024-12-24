@@ -1,4 +1,4 @@
-import CarbonIntesity from "./pages/carbonIntensity";
+import CarbonIntensity from "./pages/carbonIntensity";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -10,9 +10,8 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <CarbonIntesity />
+      <CarbonIntensity />
     </ThemeProvider>
-
   );
 }
 
