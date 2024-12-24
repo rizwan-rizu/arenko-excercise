@@ -80,7 +80,7 @@ const CarbonIntensity = () => {
           ? <Box textAlign={"center"}><Typography variant="body2">Select dates to see chart</Typography></Box>
           : isChartLoading
             ? <Box textAlign={"center"}><CircularProgress size={50} /></Box>
-            : (
+            : (!error ?
               <Chart
                 type="bar"
                 height={500}
@@ -91,6 +91,7 @@ const CarbonIntensity = () => {
                 xAxisLabel="Date & Time"
                 yAxisLabel="Carbon Intensity"
               />
+              : <Box textAlign={"center"}><Typography variant="body2">Please resolve the error in order to see carbon intensity data.</Typography></Box>
             )
       }
     </Container>

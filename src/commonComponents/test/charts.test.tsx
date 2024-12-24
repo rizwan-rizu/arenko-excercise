@@ -19,7 +19,7 @@ describe('Chart Component', () => {
     expect(screen.getByTestId("barChart")).toBeInTheDocument();
   });
 
-  it('should render line chart when type is "bar" and intensityType is "both"', () => {
+  it('should render line chart when type is "line" and intensityType is "both"', () => {
     render(<Chart {...mockData} intensityType='both' type="line" />);
 
     expect(screen.getByText('Forecast Intensity')).toBeInTheDocument();
