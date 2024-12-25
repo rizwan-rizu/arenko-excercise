@@ -22,15 +22,22 @@ const RadioBtn = (props: RadioBtnProps) => {
 
   return (
     <FormControl>
-      <FormLabel id="controlled-radio-buttons-group">{title}</FormLabel>
+      <FormLabel id="radio-btn-group">{title}</FormLabel>
       <RadioGroup
         row={isRow}
-        aria-labelledby="controlled-radio-buttons-group"
-        name="controlled-radio-buttons-group"
+        name="radio-btn-group"
         value={value}
         onChange={handleChange}
       >
-        {data.map(i => <FormControlLabel key={i.label} value={i.value} control={<Radio size='small' />} label={i.label} />)}
+        {data.map(i =>
+          <FormControlLabel
+            aria-label={`Select ${i.label}`}
+            key={i.label}
+            value={i.value}
+            control={<Radio size='small' />}
+            label={i.label}
+          />
+        )}
       </RadioGroup>
     </FormControl>
   );

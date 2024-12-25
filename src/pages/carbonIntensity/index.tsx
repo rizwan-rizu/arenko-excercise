@@ -56,12 +56,13 @@ const CarbonIntensity = () => {
   };
 
   const body = () => (
-    <Container>
+    <Container role="main" aria-label="Carbon Intensity Data">
       <Typography sx={{ py: 2 }} variant="h6">Filters</Typography>
       <Stack direction="row" alignItems={"center"} sx={{ flexWrap: 'wrap' }} spacing={2}>
-        <DateTimeField label="From" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setFromDate(value))} />
-        <DateTimeField label="To" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setToDate(value))} />
+        <DateTimeField aria-label="Select from date" label="From" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setFromDate(value))} />
+        <DateTimeField aria-label="Select to date" label="To" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setToDate(value))} />
         <RadioBtn
+          aria-labelledby="intensity-type-label"
           isRow={true}
           title="Intensity Type"
           value={intensityType}
@@ -73,13 +74,13 @@ const CarbonIntensity = () => {
           ]}
         />
       </Stack>
-      {error && <Alert sx={{ mt: 2 }} severity="error">{error}</Alert>}
+      {error && <Alert role="alert" sx={{ mt: 2 }} severity="error">{error}</Alert>}
       <Typography sx={{ py: 3 }} variant="h6">{`Carbon Intensity Over Time (Forecast / Actual)`}</Typography>
       {
         (!from || !to)
           ? <Box textAlign={"center"}><Typography variant="body2">Select dates to see chart</Typography></Box>
           : isChartLoading
-            ? <Box textAlign={"center"}><CircularProgress size={50} /></Box>
+            ? <Box textAlign={"center"}><CircularProgress aria-label="Loading chart data" size={50} /></Box>
             : (!error ?
               <Chart
                 type="bar"
@@ -90,6 +91,7 @@ const CarbonIntensity = () => {
                 intensityType={intensityType}
                 xAxisLabel="Date & Time"
                 yAxisLabel="Carbon Intensity"
+                aria-label="Carbon intensity chart"
               />
               : <Box textAlign={"center"}><Typography variant="body2">Please resolve the error in order to see carbon intensity data.</Typography></Box>
             )
