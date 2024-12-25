@@ -18,6 +18,7 @@
   "devDependencies": {
     "@emotion/styled": "^11.14.0",
     "@eslint/js": "^9.15.0",
+    "@mui/icons-material": "^6.3.0",
     "@mui/material": "^6.2.1",
     "@mui/styled-engine-sc": "^6.2.1",
     "@mui/x-charts": "^7.23.2",
