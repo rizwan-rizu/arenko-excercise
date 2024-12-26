@@ -15,12 +15,12 @@
 
 import { ReactElement } from "react";
 
-interface iProtectedRouteProps {
+interface ProtectedRouteProps {
   element: ReactElement
   role: string[]
 }
 
-const ProtectedRoute = ({ element }: iProtectedRouteProps) => {
+const ProtectedRoute = ({ element }: ProtectedRouteProps) => {
 
   return element;
 }

@@ -31,4 +31,15 @@ You can then start the exercise, good luck! 🍀
 
 ## Candidate README
 
-_add project info and notes here_
+### Technology Used
+- Typescript
+- React
+- Material-UI (MUI)
+- React-router-dom
+- dayjs (open source date library)
+- axios
+
+### Implementation Highlights
+- Implemented modular and reusable components such as Chart, DateTime Picker, and Radio Button, enabling consistent design and functionality across the application. Designed a Template Wrapper to seamlessly integrate the Header, Footer, and Content, ensuring a unified layout structure and streamlined development for future enhancements.
+- Leveraged TypeScript across the entire project to ensure type safety, reduce runtime errors, and improve code maintainability. 
+- Integrated React Router DOM to manage routing efficiently, ensuring smooth navigation throughout the application. Implemented a Protected Route Wrapper to safeguard restricted routes by allowing conditional access. While no conditions are currently added, this structure lays the groundwork for future authentication and authorization mechanisms, enhancing the application's security and user experience.

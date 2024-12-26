@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { Dayjs } from 'dayjs';
 
-interface iDateTimeField {
+interface DateTimeField {
   label: string
   handleChange: (value: Dayjs | null) => void;
   disablePast?: boolean
@@ -13,7 +13,7 @@ interface iDateTimeField {
   maxDate?: Dayjs
 }
 
-const DateTimeField = (props: iDateTimeField) => {
+const DateTimeField = (props: DateTimeField) => {
   const { label, handleChange, disableFuture, disablePast, minDate, maxDate } = props;
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
