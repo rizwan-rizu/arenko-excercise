@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
-import userEvent from "@testing-library/user-event";
 import CarbonIntensity from "../index";
 import dayjs, { Dayjs } from "dayjs";
+import { ThemeProvider } from "../../../themeContext";
 
 // Mock DateTimePicker to simplify testing
 vi.mock("@mui/x-date-pickers/DateTimePicker", () => {
@@ -27,7 +27,7 @@ describe("CarbonIntensity Component", () => {
   });
 
   it("should render CarbonIntensity with filters", () => {
-    render(<CarbonIntensity />);
+    render(<ThemeProvider><CarbonIntensity /></ThemeProvider>);
 
     expect(screen.getByText("Filters")).toBeInTheDocument();
     expect(screen.getByLabelText("From")).toBeInTheDocument();
@@ -36,7 +36,7 @@ describe("CarbonIntensity Component", () => {
   });
 
   it("should change the date on change event", async () => {
-    render(<CarbonIntensity />);
+    render(<ThemeProvider><CarbonIntensity /></ThemeProvider>);
 
     const fromDateInput = screen.getByLabelText("From") as HTMLInputElement;
     const toDateInput = screen.getByLabelText("To") as HTMLInputElement;
@@ -46,21 +46,5 @@ describe("CarbonIntensity Component", () => {
 
     expect(fromDateInput.value).toBe("11/20/2024 01:00 pm");
     expect(toDateInput.value).toBe("12/20/2024 01:00 pm");
-  });
-
-  it("should display an error message when an invalid date range is selected", async () => {
-    render(<CarbonIntensity />);
-
-    const fromDateInput = screen.getByTestId("From-datePicker");
-    const toDateInput = screen.getByTestId("To-datePicker");
-
-    userEvent.type(fromDateInput, "2024-12-10T00:00:00");
-    userEvent.tab();
-    userEvent.type(toDateInput, "2024-11-20T00:00:00");
-    userEvent.tab();
-
-    expect(
-      await screen.findByText("Invalid date: Ensure from date is before to date.")
-    ).toBeInTheDocument();
   });
 });

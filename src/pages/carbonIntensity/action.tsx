@@ -15,12 +15,12 @@ type PayloadAction<Type extends ActionTypes, Payload> = {
   payload: Payload;
 };
 
-export const setFromDate = (date: Dayjs): PayloadAction<ActionTypes.FROM, Dayjs | null> => ({
+export const setFromDate = (date: Dayjs | null): PayloadAction<ActionTypes.FROM, Dayjs | null> => ({
   type: ActionTypes.FROM,
   payload: date,
 });
 
-export const setToDate = (date: Dayjs): PayloadAction<ActionTypes.TO, Dayjs | null> => ({
+export const setToDate = (date: Dayjs | null): PayloadAction<ActionTypes.TO, Dayjs | null> => ({
   type: ActionTypes.TO,
   payload: date,
 });

@@ -1,9 +1,10 @@
 import { Alert, Box, CircularProgress, Container, Stack, Typography } from "@mui/material";
-import dayjs, { Dayjs } from "dayjs";
+import { Dayjs } from "dayjs";
 import { useEffect, useReducer } from "react";
 import { initialState, reducer } from "./reducer";
-import { setError, setFromDate, setToDate } from "./action";
+import { setFromDate, setToDate } from "./action";
 import { fetchCarbonIntensity } from "./api";
+import { isValidDateRange } from "../../utility";
 import Template from "../template";
 import DateTimeField from "../../commonComponents/dateTimeField";
 import Chart from "../../commonComponents/chart";
@@ -25,42 +26,16 @@ const CarbonIntensity = () => {
 
   useEffect(() => {
     if (from && to) {
-      if (isValidDateRange(from, to)) fetchCarbonIntensity(from, to, dispatch);
+      if (isValidDateRange(from, to, dispatch)) fetchCarbonIntensity(from, to, dispatch);
     }
   }, [from, to])
-
-  const isValidDateRange = (from: Dayjs | null, to: Dayjs | null): boolean => {
-    if (!from || !to) return false;
-
-    const isFromBeforeTo = from.isBefore(to);
-    const isFromInPast = from.isBefore(dayjs());
-    const isToInPast = to.isBefore(dayjs());
-    const isRangeWithin14Days = to.diff(from, "day") <= 14;
-
-    dispatch(setError(null))
-
-    if (!isFromBeforeTo) {
-      dispatch(setError("Invalid date: Ensure from date is before to date. "))
-      return false;
-    }
-    if (!isFromInPast || !isToInPast) {
-      dispatch(setError("Invalid date: Ensure the dates (from & to) are in the past. "))
-      return false;
-    }
-    if (!isRangeWithin14Days) {
-      dispatch(setError("Invalid date range: Ensure there is at most 14 day range. "))
-      return false;
-    }
-
-    return true;
-  };
 
   const body = () => (
     <Container role="main" aria-label="Carbon Intensity Data">
       <Typography sx={{ pt: 2 }} variant="h6">Filters</Typography>
       <Stack direction="row" alignItems={"center"} sx={{ flexWrap: 'wrap' }} spacing={2}>
-        <DateTimeField aria-label="Select from date" label="From" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setFromDate(value))} />
-        <DateTimeField aria-label="Select to date" label="To" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setToDate(value))} />
+        <DateTimeField label="From" disableFuture={true} handleChange={(value: Dayjs | null) => dispatch(setFromDate(value))} />
+        <DateTimeField label="To" disableFuture={true} handleChange={(value: Dayjs | null) => dispatch(setToDate(value))} />
         <RadioBtn
           aria-labelledby="intensity-type-label"
           isRow={true}

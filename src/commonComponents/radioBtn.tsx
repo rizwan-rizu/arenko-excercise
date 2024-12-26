@@ -26,6 +26,7 @@ const RadioBtn = (props: RadioBtnProps) => {
     <FormControl>
       <FormLabel id="radio-btn-group">{title}</FormLabel>
       <RadioGroup
+        aria-labelledby="radio-btn-group"
         row={isRow}
         name="radio-btn-group"
         value={value}
