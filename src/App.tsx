@@ -1,18 +1,15 @@
-import { useState } from 'react';
-import './App.css';
+import CarbonIntensity from "./pages/carbonIntensity";
+import { Routes, Route } from "react-router-dom";
+import { roles } from "./utility";
+import { Box } from "@mui/material";
+import ProtectedRoute from "./protectedRoutes";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <>
-      <h1>FE exercise</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<ProtectedRoute role={[roles.ALL]} element={<CarbonIntensity />} />} />
+      <Route path="*" element={<Box>Page not found</Box>} />
+    </Routes>
   );
 }
 

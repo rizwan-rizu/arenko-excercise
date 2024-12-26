@@ -1,24 +1,31 @@
 import { render, screen } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
+// import { userEvent } from '@testing-library/user-event';
 import App from './App';
+import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { ThemeProvider } from './themeContext';
 
 describe('App', () => {
-  it('renders App component', () => {
-    render(<App />);
+  it('renders app correctly on default route', async () => {
+    render(
+      <ThemeProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    );
 
-    screen.getByRole('heading', { level: 1, name: /FE exercise/ });
-    screen.getByRole('button', { name: /count is/ });
+    expect(screen.getByText("Carbon Intensity Over Time (Forecast / Actual)")).toBeInTheDocument();
+    expect(screen.getByText("Filters")).toBeInTheDocument();
+    expect(screen.getByText("Carbon Intensity")).toBeInTheDocument();
   });
 
-  it('increments the count value', async () => {
-    const user = userEvent.setup();
-    render(<App />);
-    const btn = screen.getByRole('button', { name: /count is/ });
+  it('display page not found on random route', () => {
+    render(
+      <MemoryRouter initialEntries={['/lorem']}>
+        <App />
+      </MemoryRouter>
+    );
 
-    expect(btn).toHaveTextContent('count is 0');
-
-    await user.click(btn);
-
-    expect(btn).toHaveTextContent('count is 1');
+    expect(screen.getByText("Page not found")).toBeInTheDocument();
   });
 });
