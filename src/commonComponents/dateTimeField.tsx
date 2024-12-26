@@ -6,7 +6,7 @@ import { Dayjs } from 'dayjs';
 
 interface iDateTimeField {
   label: string
-  handleChange: Function
+  handleChange: (value: Dayjs | null) => void;
   disablePast?: boolean
   disableFuture?: boolean
   minDate?: Dayjs
