@@ -25,7 +25,7 @@ const CarbonIntensity = () => {
 
   useEffect(() => {
     if (from && to) {
-      isValidDateRange(from, to) && fetchCarbonIntensity(from, to, dispatch);
+      if (isValidDateRange(from, to)) fetchCarbonIntensity(from, to, dispatch);
     }
   }, [from, to])
 

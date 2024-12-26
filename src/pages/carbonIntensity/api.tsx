@@ -1,11 +1,13 @@
 import axios from "axios";
 import { setChartLoading, setError, setIntensityData } from "./action";
 import dayjs, { Dayjs } from "dayjs";
+import { Dispatch } from "react";
+import { Action } from "./reducer";
 
 export const fetchCarbonIntensity = async (
   from: Dayjs | null,
   to: Dayjs | null,
-  dispatch: any,
+  dispatch: Dispatch<Action>,
 ) => {
   try {
     dispatch(setChartLoading(true))
@@ -14,8 +16,8 @@ export const fetchCarbonIntensity = async (
       dispatch(setIntensityData(res?.data?.data));
     }
     else dispatch(setError("Data fetch error: Failed to fetch data. Please try again."))
-  } catch (error: any) {
-    dispatch(setError(`Data fetch error: ${error.message}`))
+  } catch (error: unknown) {
+    dispatch(setError(`Data fetch error: ${error instanceof Error ? error.message : "An unknown error has occured"}`))
   } finally {
     dispatch(setChartLoading(false))
   }

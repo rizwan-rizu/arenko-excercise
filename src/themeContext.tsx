@@ -4,7 +4,7 @@ import { CssBaseline } from "@mui/material";
 
 interface ThemeContextType {
   darkMode: boolean;
-  toggleTheme: Function;
+  toggleTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

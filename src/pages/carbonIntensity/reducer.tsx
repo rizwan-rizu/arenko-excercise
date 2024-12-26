@@ -42,9 +42,10 @@ export const reducer = (state: State, action: Action): State => {
       return { ...state, to: action.payload };
     case ActionTypes.CHART_LOADING:
       return { ...state, isChartLoading: action.payload };
-    case ActionTypes.DATA:
+    case ActionTypes.DATA: {
       const { xValues, forecastValues, actualValues } = action.payload;
       return { ...state, xValues, forecastValues, actualValues };
+    }
     case ActionTypes.ERROR:
       return { ...state, isChartLoading: false, error: action.payload };
     case ActionTypes.INTENSITY_TYPE:

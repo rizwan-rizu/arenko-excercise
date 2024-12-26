@@ -2,12 +2,12 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import CarbonIntensity from "../index";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 // Mock DateTimePicker to simplify testing
 vi.mock("@mui/x-date-pickers/DateTimePicker", () => {
   return {
-    DateTimePicker: ({ label, onChange }: { label: string; onChange: (value: any) => void }) => (
+    DateTimePicker: ({ label, onChange }: { label: string; onChange: (value: Dayjs | null) => void }) => (
       <div>
         <label htmlFor={label}>{label}</label>
         <input

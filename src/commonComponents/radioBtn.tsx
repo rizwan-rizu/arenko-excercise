@@ -4,11 +4,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { setIntensityType } from '../pages/carbonIntensity/action';
+import { Dispatch } from 'react';
+import { Action } from '../pages/carbonIntensity/reducer';
 
 interface RadioBtnProps {
   title: string
   value: string
-  dispatch: any
+  dispatch: Dispatch<Action>
   isRow?: boolean
   data: { value: string, label: string }[]
 }

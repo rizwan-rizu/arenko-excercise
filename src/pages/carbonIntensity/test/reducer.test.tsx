@@ -62,7 +62,7 @@ describe('Reducer', () => {
   });
 
   it('should return the initial state when an unknown action type is dispatched', () => {
-    const action: any = { type: 'UNKNOWN_ACTION', payload: null };
+    const action = { type: 'UNKNOWN_ACTION', payload: null } as never;
     const newState = reducer(initialState, action);
 
     expect(newState).toEqual(initialState);

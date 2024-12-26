@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
 import Footer from "./footer";
 import Header from "./header";
 
 interface iTemplateProps {
-  body: any;
+  body: ReactNode;
   headerTitle: string
 }
 

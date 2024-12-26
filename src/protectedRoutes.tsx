@@ -13,8 +13,10 @@
  * - Pass the `element` prop to render the component.
  */
 
+import { ReactElement } from "react";
+
 interface iProtectedRouteProps {
-  element: any
+  element: ReactElement
   role: string[]
 }
 
