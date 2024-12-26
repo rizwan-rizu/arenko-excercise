@@ -57,7 +57,7 @@ const CarbonIntensity = () => {
 
   const body = () => (
     <Container role="main" aria-label="Carbon Intensity Data">
-      <Typography sx={{ py: 2 }} variant="h6">Filters</Typography>
+      <Typography sx={{ pt: 2 }} variant="h6">Filters</Typography>
       <Stack direction="row" alignItems={"center"} sx={{ flexWrap: 'wrap' }} spacing={2}>
         <DateTimeField aria-label="Select from date" label="From" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setFromDate(value))} />
         <DateTimeField aria-label="Select to date" label="To" disableFuture={true} handleChange={(value: Dayjs) => dispatch(setToDate(value))} />
