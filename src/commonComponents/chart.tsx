@@ -3,7 +3,7 @@ import { State } from "../pages/carbonIntensity/reducer";
 import { axisClasses } from '@mui/x-charts/ChartsAxis';
 import { styled } from '@mui/material/styles';
 
-interface iChartProps {
+interface ChartProps {
   type: "bar" | "line"
   width?: number;
   height?: number
@@ -15,7 +15,7 @@ interface iChartProps {
   intensityType: string
 }
 
-const Chart = (props: iChartProps) => {
+const Chart = (props: ChartProps) => {
   const { xValues, forecastValues, actualValues, type, width, height, yAxisLabel, xAxisLabel, intensityType } = props;
 
   const getSeries = () => {

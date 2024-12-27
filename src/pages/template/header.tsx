@@ -2,11 +2,11 @@ import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { DarkMode, LightMode } from '@mui/icons-material';
 import { useThemeContext } from '../../themeContext';
 
-interface iHeaderProps {
+interface HeaderProps {
 	title: string
 }
 
-const Header = (props: iHeaderProps) => {
+const Header = (props: HeaderProps) => {
 	const { title } = props;
 	const { darkMode, toggleTheme } = useThemeContext();
 
