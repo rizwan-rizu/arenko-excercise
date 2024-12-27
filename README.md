@@ -43,12 +43,72 @@ The application is deployed on Vercel and is accessible at https://arenko-excerc
 - axios
 
 ### Implementation Highlights
-- `Modular & Reusable components`: Implemented modular and reusable components such as Chart, DateTime Picker, and Radio Button, enabling consistent design and functionality across the application. Designed a Template Wrapper to seamlessly integrate the Header, Footer, and Content, ensuring a unified layout structure and streamlined development for future enhancements.
-- `Typescript`: Leveraged TypeScript across the entire project to ensure type safety, reduce runtime errors, and improve code maintainability. 
-- `Routing with React Router Dom`: Integrated React Router DOM to manage routing efficiently, ensuring smooth navigation throughout the application. Implemented a Protected Route Wrapper to safeguard restricted routes by allowing conditional access. While no conditions are currently added, this structure lays the groundwork for future authentication and authorization mechanisms, enhancing the application's security and user experience.
-- `Dark & Light Mode with React Context API`:Implemented a ThemeProvider to manage global theming, toggle between dark/light modes, and persist user preferences using localStorage. Provides a useThemeContext hook for easy access to theme state and toggling functionality.
-- `Error Boundary`: Implemented a React Error Boundary to gracefully catch and handle JavaScript errors in the component tree, providing a fallback UI and ensuring the application remains stable without crashing the entire UI.
-- `Unit Testing`: Tested individual components and functions to ensure they work as expected, helping to catch bugs early and maintain code quality.
-- `State Management with useReducer`: Utilized the useReducer hook to manage the state logic by implementing a reducer and action creators for clear and predictable updates. I prefer useReducer over useState as it provides better control and organization when managing complex state, avoiding the clutter of multiple useState calls.
-- `GitHub Actions`: Ensured all GitHub Actions workflows pass successfully, maintaining code quality and preventing issues before deployment.
-- `Custom API Service`: Written a reusable and centralized API service using Axios to streamline HTTP requests. Includes request and response interceptors for features like dynamic header management (e.g., Authorization tokens) and handling API errors (e.g., automatic token refresh on 401/403 responses).
+#### Modular & Reusable Components
+
+To ensure a consistent design and functionality across the application, I focused on creating modular and reusable components such as Chart, DateTime Picker, and Radio Button. These components reduce redundancy and facilitate scalability. Additionally, I developed a Template Wrapper that seamlessly integrates the Header, Footer, and Content, ensuring a unified layout structure. This modularity streamlines development and simplifies future enhancements.
+
+#### TypeScript for Type Safety
+
+I leveraged TypeScript throughout the project to enforce strong typing. This approach significantly reduces runtime errors, enhances developer productivity, and improves code maintainability. Using TypeScript allowed me to detect potential issues early during development and provided better tooling support.
+
+#### Routing with React Router DOM
+
+Efficient navigation was implemented using React Router DOM, providing a smooth user experience throughout the application. A Protected Route Wrapper was added to conditionally restrict access to certain routes. While no conditions are currently active, this foundational setup is designed to support future authentication and authorization requirements, enhancing security and user experience.
+
+#### Dark & Light Mode with React Context API
+
+I implemented a ThemeProvider using the React Context API to manage global theming. This allowed seamless toggling between dark and light modes while persisting user preferences via localStorage. A custom useThemeContext hook was introduced for easy access to the theme state and toggling functionality, ensuring a user-friendly implementation.
+
+#### Error Boundary
+
+To enhance application stability, I implemented a React Error Boundary. This gracefully catches JavaScript errors in the component tree, displays a fallback UI, and prevents the entire UI from crashing, thereby ensuring a resilient user experience.
+
+#### Unit Testing
+
+I focused on testing individual components and functions to ensure expected behavior and early detection of bugs. This approach helps maintain code quality and reliability, particularly for critical application features.
+
+#### State Management with useReducer
+
+For complex state management, I opted for the useReducer hook. This approach offers better control and organization compared to multiple useState calls. By implementing a reducer and action creators, I ensured clear and predictable state updates, resulting in a cleaner and more maintainable state logic.
+
+#### GitHub Actions
+
+I utilized GitHub Actions to automate workflows, ensuring all workflows pass successfully. This helped maintain code quality and prevent deployment issues by running automated checks during the development process.
+
+#### Custom API Service
+
+A centralized and reusable API service was developed using Axios. It includes request and response interceptors for dynamic header management (e.g., Authorization tokens) and error handling (e.g., automatic token refresh on 401/403 responses). This structure streamlines HTTP requests and ensures consistency across the application.
+
+
+### Accessibility Features
+The CarbonIntensity component is designed with accessibility in mind, ensuring a user-friendly experience for people with diverse abilities. Here are some of the key accessibility features integrated into the component:
+#### Semantic HTML Elements
+The <Container> is defined with the role="main" attribute, signaling it as the primary content area for screen readers. Additionally, headings and labels are structured using <Typography> for better clarity and usability with assistive technologies.
+#### Accessible Labels
+ARIA attributes, such as aria-label and aria-labelledby, are used to provide meaningful descriptions for elements like the chart, loading spinner, and radio buttons. For instance, the loading spinner includes the aria-label="Loading chart data" attribute, making its purpose clear to screen reader users.
+#### Error Announcements
+The Alert component includes role="alert", ensuring error messages are immediately announced by screen readers. This helps users quickly understand and resolve any issues.
+#### Keyboard Navigation
+All interactive elements, such as the Radio Button group and DateTimeField, are fully accessible via keyboard navigation. Focusable elements follow a logical order, making the interface intuitive and easy to use without a mouse.
+#### Fallbacks for Missing Data
+When required inputs are missing, the application provides clear messages like "Select dates to see chart." These messages guide users on what actions to take next, reducing confusion and improving usability.
+
+### Thoughts and Reflections
+#### Why These Choices?
+
+Each library and tool was chosen for its proven ability to solve specific challenges:
+
+- TypeScript provided type safety, making the codebase more robust.
+- Material-UI accelerated UI development with pre-designed components.
+- React Router DOM and Axios are industry standards for routing and HTTP communication, ensuring reliability and maintainability.
+- React Context API offered an elegant solution for global theming without introducing additional dependencies (Redux).
+- dayjs provided simplified date and time manipulation with an intuitive API.
+
+### What Would I Do With More Time?
+
+#### Given additional time, I would:
+
+- Enhance unit testing coverage by incorporating integration and end-to-end tests using tools like Cypress or Playwright.
+- Incorporate additional accessibility features to ensure a more inclusive user experience.
+- Extend the Error Boundary implementation with logging services like Sentry for better monitoring and debugging.
+- Enhance the application's responsiveness to better support all screen sizes. While I have utilized flex-wrap to allow elements to adjust dynamically, I could further refine the layout by incorporating Material-UI's (MUI) media query utilities. This would enable me to define breakpoints and create more tailored layouts, ensuring an even better user experience on devices of all sizes, from mobile to desktop.
