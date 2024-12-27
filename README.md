@@ -31,6 +31,9 @@ You can then start the exercise, good luck! 🍀
 
 ## Candidate README
 
+### Deployment: 
+The application is deployed on Vercel and is accessible at https://arenko-excercise.vercel.app for live test.
+
 ### Technology Used
 - Typescript
 - React
@@ -40,6 +43,11 @@ You can then start the exercise, good luck! 🍀
 - axios
 
 ### Implementation Highlights
-- Implemented modular and reusable components such as Chart, DateTime Picker, and Radio Button, enabling consistent design and functionality across the application. Designed a Template Wrapper to seamlessly integrate the Header, Footer, and Content, ensuring a unified layout structure and streamlined development for future enhancements.
-- Leveraged TypeScript across the entire project to ensure type safety, reduce runtime errors, and improve code maintainability. 
-- Integrated React Router DOM to manage routing efficiently, ensuring smooth navigation throughout the application. Implemented a Protected Route Wrapper to safeguard restricted routes by allowing conditional access. While no conditions are currently added, this structure lays the groundwork for future authentication and authorization mechanisms, enhancing the application's security and user experience.
+- `Modular & Reusable components`: Implemented modular and reusable components such as Chart, DateTime Picker, and Radio Button, enabling consistent design and functionality across the application. Designed a Template Wrapper to seamlessly integrate the Header, Footer, and Content, ensuring a unified layout structure and streamlined development for future enhancements.
+- `Typescript`: Leveraged TypeScript across the entire project to ensure type safety, reduce runtime errors, and improve code maintainability. 
+- `Routing with React Router Dom`: Integrated React Router DOM to manage routing efficiently, ensuring smooth navigation throughout the application. Implemented a Protected Route Wrapper to safeguard restricted routes by allowing conditional access. While no conditions are currently added, this structure lays the groundwork for future authentication and authorization mechanisms, enhancing the application's security and user experience.
+- `Dark & Light Mode with React Context API`:Implemented a ThemeProvider to manage global theming, toggle between dark/light modes, and persist user preferences using localStorage. Provides a useThemeContext hook for easy access to theme state and toggling functionality.
+- `Error Boundary`: Implemented a React Error Boundary to gracefully catch and handle JavaScript errors in the component tree, providing a fallback UI and ensuring the application remains stable without crashing the entire UI.
+- `Unit Testing`: Tested individual components and functions to ensure they work as expected, helping to catch bugs early and maintain code quality.
+- `State Management with useReducer`: Utilized the useReducer hook to manage the state logic by implementing a reducer and action creators for clear and predictable updates. I prefer useReducer over useState as it provides better control and organization when managing complex state, avoiding the clutter of multiple useState calls.
+- `GitHub Actions`: Ensured all GitHub Actions workflows pass successfully, maintaining code quality and preventing issues before deployment.
