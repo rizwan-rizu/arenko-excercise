@@ -45,7 +45,7 @@ The application is deployed on Vercel and is accessible at https://arenko-excerc
 ### Implementation Highlights
 #### Modular & Reusable Components
 
-To ensure a consistent design and functionality across the application, I focused on creating modular and reusable components such as Chart, DateTime Picker, and Radio Button. These components reduce redundancy and facilitate scalability. Additionally, I developed a Template Wrapper that seamlessly integrates the Header, Footer, and Content, ensuring a unified layout structure. This modularity streamlines development and simplifies future enhancements.
+To ensure a consistent design and functionality across the application, I focused on creating modular and reusable components such as Chart, DateTime Picker, and Radio Button etc. These components reduce redundancy and facilitate scalability. Additionally, I developed a Template Wrapper that seamlessly integrates the Header, Footer, and Content, ensuring a unified layout structure. This modularity streamlines development and simplifies future enhancements.
 
 #### TypeScript for Type Safety
 
@@ -112,3 +112,9 @@ Each library and tool was chosen for its proven ability to solve specific challe
 - Incorporate additional accessibility features to ensure a more inclusive user experience.
 - Extend the Error Boundary implementation with logging services like Sentry for better monitoring and debugging.
 - Enhance the application's responsiveness to better support all screen sizes. While I have utilized flex-wrap to allow elements to adjust dynamically, I could further refine the layout by incorporating Material-UI's (MUI) media query utilities. This would enable me to define breakpoints and create more tailored layouts, ensuring an even better user experience on devices of all sizes, from mobile to desktop.
+
+### Screenshots
+
+![Screenshot 1](./src/assets/images/Screenshot%202024-12-28%20at%202.40.18 PM.png)
+![Screenshot 2](./src/assets/images/Screenshot%202024-12-28%20at%202.41.12 PM.png)
+![Screenshot 3](./src/assets/images/Screenshot%202024-12-28%20at%202.41.31 PM.png)
