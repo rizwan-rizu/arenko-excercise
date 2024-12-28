@@ -45,7 +45,7 @@ The application is deployed on Vercel and is accessible at https://arenko-excerc
 ### Implementation Highlights
 #### Modular & Reusable Components
 
-To ensure a consistent design and functionality across the application, I focused on creating modular and reusable components such as Chart, DateTime Picker, and Radio Button. These components reduce redundancy and facilitate scalability. Additionally, I developed a Template Wrapper that seamlessly integrates the Header, Footer, and Content, ensuring a unified layout structure. This modularity streamlines development and simplifies future enhancements.
+To ensure a consistent design and functionality across the application, I focused on creating modular and reusable components such as Chart, DateTime Picker, and Radio Button etc. These components reduce redundancy and facilitate scalability. Additionally, I developed a Template Wrapper that seamlessly integrates the Header, Footer, and Content, ensuring a unified layout structure. This modularity streamlines development and simplifies future enhancements.
 
 #### TypeScript for Type Safety
 
